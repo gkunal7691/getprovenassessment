@@ -13,7 +13,7 @@ export class VerificationComponent implements OnInit {
   showResend: boolean;
   showOtp: boolean;
   showView: boolean;
-  diableView: boolean;
+
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
@@ -85,5 +85,7 @@ export class VerificationComponent implements OnInit {
 
   resend() {
     this.showResend = false;
+    this.showView = false;
+    this.showOtp = false;
   }
 }
