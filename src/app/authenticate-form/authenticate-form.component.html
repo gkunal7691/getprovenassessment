@@ -2,5 +2,5 @@
   <app-register (register)="onRegister($event)"></app-register>
 </div>
 <div class="d-flex justify-content-center mt-5" *ngIf="!isRegister">
-  <app-verification (register)="onRegister($event)"></app-verification>
+  <app-verification (register)="onRegister($event)" [userData]="userData"></app-verification>
 </div>

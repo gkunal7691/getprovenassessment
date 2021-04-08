@@ -18,10 +18,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a
-          class="nav-link"
-          routerLink=""
-          style="font-size: 16px; color: white"
+        <a class="nav-link" routerLink="" style="font-size: 16px; color: white"
           >Register
         </a>
       </li>
@@ -31,6 +28,15 @@
           routerLink="./users"
           style="font-size: 16px; color: white"
           >All Users
+        </a>
+      </li>
+      <li *ngIf="cacheService.getCache()" class="nav-item">
+        <a
+          class="nav-link"
+          href="#"
+          (click)="cacheService.removeCache('userName')"
+          style="font-size: 16px; color: white"
+          >Logout
         </a>
       </li>
     </ul>

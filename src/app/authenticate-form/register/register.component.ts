@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/user.service';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +9,9 @@ import { UserService } from 'src/app/user.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  @Output() register = new EventEmitter<boolean>();
+  @Output() register = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private cacheService: CacheService) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterClick() {
-    this.register.emit(true);
-    // this.userService.register(this.registerForm.value);
+    this.register.emit(this.registerForm.value);
   }
 }

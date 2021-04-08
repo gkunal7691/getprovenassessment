@@ -19,41 +19,27 @@
         </mat-error>
       </mat-form-field>
       <div class="row">
-        <p *ngIf="showOtp" class="otp-expiry ml-4 mb-0">
+        <p class="otp-expiry ml-4 mb-0">
           OTP Expires in 60s -
-          <span id="timer" class="timer"
-            ><span id="min">05:</span><span id="sec">60</span></span
-          >
+          <span id="timer" class="timer">00:<span id="time">60</span></span>
         </p>
       </div>
       <div class="row">
         <div class="col-12">
           <button
-            *ngIf="!showResend"
             mat-raised-button
             color="primary"
-            class="w-100"
+            class="w-100 mt-3"
             [disabled]="verificationForm.invalid"
             (click)="onVerify()"
           >
             Verify Code
           </button>
           <button
-            *ngIf="showView"
-            mat-raised-button
-            color="accent"
-            class="w-100 mt-3"
-            [disabled]="verificationForm.invalid"
-            routerLink="./users"
-          >
-            View Users
-          </button>
-          <button
             *ngIf="showResend"
             mat-raised-button
             color="warn"
             class="w-100 mt-3"
-            [disabled]="verificationForm.invalid"
             (click)="resend()"
           >
             Re-Send Code

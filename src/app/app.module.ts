@@ -11,13 +11,22 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { CdkTableModule } from '@angular/cdk/table';
 import { AuthenticateFormComponent } from './authenticate-form/authenticate-form.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { RegisterComponent } from './authenticate-form/register/register.component';
 import { VerificationComponent } from './authenticate-form/verification/verification.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthenticateFormComponent, AllUsersComponent, RegisterComponent, VerificationComponent],
+  declarations: [
+    AppComponent,
+    AuthenticateFormComponent,
+    AllUsersComponent,
+    RegisterComponent,
+    VerificationComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +39,9 @@ import { VerificationComponent } from './authenticate-form/verification/verifica
     MatIconModule,
     MatInputModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
