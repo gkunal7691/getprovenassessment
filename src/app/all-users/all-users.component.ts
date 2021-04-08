@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../user.model';
 import { UserService } from '../services/user.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -47,18 +47,19 @@ const ELEMENT_DATA: User[] = [
   templateUrl: './all-users.component.html',
   styleUrls: ['./all-users.component.scss'],
 })
-export class AllUsersComponent implements OnInit {
+export class AllUsersComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['userName', 'email', 'age', 'country', 'phone'];
   dataSource = new MatTableDataSource();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private userService: UserService) {}
+  ngAfterViewInit(): void {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource(
       ELEMENT_DATA.concat(this.userService.userArray)
     );
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }

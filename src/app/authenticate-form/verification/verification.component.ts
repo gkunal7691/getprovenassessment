@@ -58,6 +58,7 @@ export class VerificationComponent implements OnInit {
   }
 
   resend() {
+    this.verificationForm.reset();
     this.showResend = false;
     document.getElementById('timer').innerHTML = '00:<span id="time">60</span>';
     let counterSec = 60;
