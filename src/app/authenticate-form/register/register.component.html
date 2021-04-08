@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title text-center">Register</h1>
+    <form [formGroup]="registerForm">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="userName" />
+            <mat-icon matSuffix class="secondary-text">person</mat-icon>
+            <mat-error>
+              <small *ngIf="registerForm.controls['userName'].errors?.required">
+                Username is required</small
+              >
+              <small
+                *ngIf="registerForm.controls['userName'].errors?.minlength"
+              >
+                Username must be minimum of 5 characters</small
+              >
+              <small
+                *ngIf="registerForm.controls['userName'].errors?.maxlength"
+              >
+                Username can be maximum of 10 characters</small
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+            <mat-error>
+              <small *ngIf="registerForm.controls['email'].errors?.required">
+                Email is required</small
+              >
+              <small
+                *ngIf="
+                  !registerForm.controls['email'].errors?.required &&
+                  registerForm.get('email').hasError('email')
+                "
+                >Please enter a valid email address</small
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" />
+            <mat-icon matSuffix class="secondary-text">accessible</mat-icon>
+            <mat-error>
+              <small *ngIf="registerForm.controls['age'].errors?.required">
+                Age is required</small
+              >
+              <small *ngIf="registerForm.controls['age'].errors?.min">
+                Age can be maximum of 18</small
+              >
+              <small *ngIf="registerForm.controls['age'].errors?.max">
+                Age can be maximum of 60</small
+              >
+              <small
+                *ngIf="
+                  !registerForm.controls['age'].errors?.maxlength &&
+                  registerForm.controls['age'].errors?.pattern
+                "
+              >
+                Age can be only be number</small
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country" />
+            <mat-icon matSuffix class="secondary-text">flag</mat-icon>
+            <mat-error>
+              <small *ngIf="registerForm.controls['country'].errors?.required">
+                Country is required</small
+              >
+              <small *ngIf="registerForm.controls['country'].errors?.maxlength">
+                Country can be maximum of 15 characters</small
+              >
+              <small
+                *ngIf="
+                  !registerForm.controls['country'].errors?.maxlength &&
+                  registerForm.controls['country'].errors?.pattern
+                "
+              >
+                Country can be only be letters</small
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" />
+            <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+            <mat-error>
+              <small *ngIf="registerForm.controls['phone'].errors?.required">
+                Phone Number is required</small
+              >
+              <small
+                *ngIf="
+                  !registerForm.controls['phone'].errors?.pattern &&
+                  registerForm.controls['phone'].errors?.minlength
+                "
+              >
+                Phone Number must be minimum of 10 characters</small
+              >
+              <small
+                *ngIf="
+                  !registerForm.controls['phone'].errors?.pattern &&
+                  registerForm.controls['phone'].errors?.maxlength
+                "
+              >
+                Phone Number must be maximum of 10 characters</small
+              >
+              <small *ngIf="registerForm.controls['phone'].errors?.pattern">
+                Phone Number can be only be numbers</small
+              >
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            [disabled]="registerForm.invalid"
+            (click)="onRegisterClick()"
+          >
+            REGISTER
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

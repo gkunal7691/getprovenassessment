@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center mt-5" *ngIf="isRegister">
+  <app-register (register)="onRegister($event)"></app-register>
+</div>
+<div class="d-flex justify-content-center mt-5" *ngIf="!isRegister">
+  <app-verification (register)="onRegister($event)"></app-verification>
+</div>

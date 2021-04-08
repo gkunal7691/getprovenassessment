@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="card-title text-center">Verification Code</h1>
+    <form [formGroup]="verificationForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter the 6 digit Code</mat-label>
+        <input matInput formControlName="code" />
+        <mat-icon matSuffix class="secondary-text">verified_user</mat-icon>
+        <mat-error>
+          <small *ngIf="verificationForm.controls['code'].errors?.required">
+            Code is required</small
+          >
+          <small *ngIf="verificationForm.controls['code'].errors?.minlength">
+            Code must be minimum of 6 characters</small
+          >
+          <small *ngIf="verificationForm.controls['code'].errors?.maxlength">
+            Code can be maximum of 6 characters</small
+          >
+        </mat-error>
+      </mat-form-field>
+      <div class="row">
+        <p *ngIf="showOtp" class="otp-expiry ml-4 mb-0">
+          OTP Expires in 60s -
+          <span id="timer" class="timer"
+            ><span id="min">05:</span><span id="sec">60</span></span
+          >
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button
+            *ngIf="!showResend"
+            mat-raised-button
+            color="primary"
+            class="w-100"
+            [disabled]="verificationForm.invalid"
+            (click)="onVerify()"
+          >
+            Verify Code
+          </button>
+          <button
+            *ngIf="showView"
+            mat-raised-button
+            color="accent"
+            class="w-100 mt-3"
+            [disabled]="verificationForm.invalid"
+            routerLink="./users"
+          >
+            View Users
+          </button>
+          <button
+            *ngIf="showResend"
+            mat-raised-button
+            color="warn"
+            class="w-100 mt-3"
+            [disabled]="verificationForm.invalid"
+            (click)="resend()"
+          >
+            Re-Send Code
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
